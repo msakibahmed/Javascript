@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time in Cities</title>
+</head>
+<body>
+<div class='timezone'>
+
+
+    <div id="guwahati">Guwahati Time: </div>
+    <div id="dubai">Dubai Time: </div>
+    <div id="london">London Time: </div>
+    <div id="newyork">New York Time: </div>
+    <div id="tokyo">Tokyo Time: </div>
+</div>
+    <script>
+
+function getTimeForCity(timeZone) {
+    return new Intl.DateTimeFormat('en-US', {
+        timeZone: timeZone,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+    }).format(new Date());
+}
+
+function updateTime() {
+    document.getElementById('guwahati').innerText = "Guwahati Time: " + getTimeForCity('Asia/Kolkata');
+    document.getElementById('dubai').innerText = "Dubai Time: " + getTimeForCity('Asia/Dubai');
+    document.getElementById('london').innerText = "London Time: " + getTimeForCity('Europe/London');
+    document.getElementById('newyork').innerText = "New York Time: " + getTimeForCity('America/New_York');
+    document.getElementById('tokyo').innerText = "Tokyo Time: " + getTimeForCity('Asia/Tokyo');
+}
+
+// Update the time every second
+setInterval(updateTime, 1000);
+
+</script>
+</body>
+</html>
